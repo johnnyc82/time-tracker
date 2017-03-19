@@ -1,0 +1,10 @@
+I"º(function() {
+  $('#runner-start').click((function(_this) {
+    return function() {
+      $('#runner').runner();
+      return console.log('clicked');
+    };
+  })(this));
+
+}).call(this);
+:ET

@@ -1,0 +1,61 @@
+I"](function() {
+  var TasksController;
+
+  TasksController = (function() {
+    function TasksController(base_element) {
+      this.base_element = base_element;
+      console.log("TasksController loaded");
+      $('#runner').runner();
+      console.log('Runner initialised');
+      $('#runner-start').click((function(_this) {
+        return function() {
+          $('#runner').runner('start');
+          return console.log('Started');
+        };
+      })(this));
+      $('#runner-stop').click((function(_this) {
+        return function() {
+          $('#runner').runner('stop');
+          return console.log('Stopped');
+        };
+      })(this));
+      $('#runner-reset').click((function(_this) {
+        return function() {
+          $('#runner').runner('reset');
+          return console.log('Reset');
+        };
+      })(this));
+      $('#runner-submit-time').click((function(_this) {
+        return function(e) {
+          e.preventDefault();
+          _this.current_time = $('#runner').text();
+          return $.ajax({
+            url: $(e.target).attr('href'),
+            dataType: "script",
+            method: "patch",
+            data: {
+              'current_time': _this.current_time
+            },
+            success: function(data, textStatus, jqXHR) {
+              return window.location.reload();
+            }
+          });
+        };
+      })(this));
+    }
+
+    return TasksController;
+
+  })();
+
+  $('body').ready((function(_this) {
+    return function() {
+      if (!$('body').is('.controller_tasks')) {
+        return;
+      }
+      return new TasksController($('body'));
+    };
+  })(this));
+
+}).call(this);
+:ET

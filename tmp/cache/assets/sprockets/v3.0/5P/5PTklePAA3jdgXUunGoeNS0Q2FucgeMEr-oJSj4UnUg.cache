@@ -1,0 +1,32 @@
+I"Ñ(function() {
+  var TasksController;
+
+  TasksController = (function() {
+    function TasksController(base_element) {
+      this.base_element = base_element;
+      console.log("TasksController loaded");
+      $('#runner-start').click(function() {
+        $('#runner').runner('start');
+        return console.log('Started');
+      });
+      $('#runner-stop').click(function() {
+        $('#runner').runner('stop');
+        return console.log('Stopped');
+      });
+    }
+
+    return TasksController;
+
+  })();
+
+  $('body').ready((function(_this) {
+    return function() {
+      if (!$('body').is('.controller_tasks')) {
+        return;
+      }
+      return new TasksController($('body'));
+    };
+  })(this));
+
+}).call(this);
+:ET

@@ -1,0 +1,8 @@
+I"Š(function() {
+  $('#runner-start').click(function() {
+    $('#runner').runner();
+    return console.log('clicked');
+  });
+
+}).call(this);
+:ET

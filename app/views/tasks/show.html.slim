@@ -1,0 +1,34 @@
+p#notice = notice
+
+p
+  strong Title:
+  = @task.title
+
+p
+  strong Status:
+  = @task.state.titleize
+
+p
+  strong Estimated time:
+  = @duration_output
+
+p
+  strong Elapsed time:
+  = @task.nice_time_elapsed
+  br
+  span#runner
+  br
+  a#runner-start[href="#"] Start
+  br
+  a#runner-stop[href="#"] Stop
+  br
+  a#runner-reset[href="#"] Reset
+  br
+  = link_to 'Submit time', submit_time_task_path(@task), id: "runner-submit-time"
+p
+  strong Discrepancy:
+  = @task.discrepancy
+
+= link_to 'Edit', edit_task_path(@task)
+| |
+= link_to 'Back', list_path(@task.list)

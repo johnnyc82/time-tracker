@@ -1,0 +1,17 @@
+p#notice = notice
+
+h1 Lists
+
+table
+
+  tbody
+    - @lists.each do |list|
+      tr 
+        td 
+          h3 = link_to list.title, list
+        td = link_to 'Edit', edit_list_path(list)
+        td = link_to 'Remove', list, method: :delete, data: { confirm: 'Are you sure you want to delete this list?' }
+
+br
+
+= link_to 'Create new list', new_list_path 

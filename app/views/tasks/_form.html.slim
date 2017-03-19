@@ -1,0 +1,27 @@
+= simple_form_for(@task) do |f|
+  = if @task.errors.any?
+    div#error_explanation
+      h2 
+        = pluralize(@task.errors.count, "error")
+        | prohibited this task from being saved:</h2>
+
+      ul
+        = @task.errors.full_messages.each do |message|
+        li = message
+
+  div.field
+    = f.input :title
+ 
+  div.field
+    = f.input :state, as: :select, collection: Task.states.keys
+
+  div.field
+    = f.input :time_est, input_html: { value: @duration_output }
+
+  div.field
+    p 
+      | Time elapsed:
+      = @task.time_elapsed
+
+  div.actions
+    = f.submit

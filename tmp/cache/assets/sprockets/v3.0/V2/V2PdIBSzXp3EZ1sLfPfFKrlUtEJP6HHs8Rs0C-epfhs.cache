@@ -1,0 +1,30 @@
+I"Å(function() {
+  var TasksController;
+
+  TasksController = (function() {
+    function TasksController(base_element) {
+      this.base_element = base_element;
+      console.log("TasksController loaded");
+      $('#runner-start').click((function(_this) {
+        return function() {
+          $('#runner').runner();
+          return console.log('clicked');
+        };
+      })(this));
+    }
+
+    return TasksController;
+
+  })();
+
+  $('body').ready((function(_this) {
+    return function() {
+      if (!$('body').is('.controller_tasks')) {
+        return;
+      }
+      return new TasksController($('body'));
+    };
+  })(this));
+
+}).call(this);
+:ET
